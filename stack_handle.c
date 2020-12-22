@@ -112,15 +112,14 @@ void swap(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-
-		temp = head->next;
-		temp->prev = head->prev;
-		head->prev->next = temp;
-		head->prev = temp;
-		head->next = temp->next;
-		temp->next->prev = head;
-		temp->next = head;
-		head = temp;
+		temp = head->next->next;
+		temp->prev = head;
+		head->next->next = head;
+		head->next->prev = NULL;
+		head->prev = head->next;
+		head->next = temp;
+		head = head->prev;
+		head->prev = NULL;
 	}
 }
 /**
