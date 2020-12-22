@@ -12,7 +12,7 @@
 #define EXIT_SUCCESS 0
 #define EXIT_FAILURE -1
 #define SUCCESS 0
-#define FAILURE -1
+#define FAILURE 1
 #define USAGE 2
 #define OPEN_FILE 3
 #define MALLOC 4
