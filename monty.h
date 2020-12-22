@@ -19,6 +19,7 @@
 #define READ 5
 #define OPCODE 6
 #define PUSH 7
+#define PINT 8
 #define BUFFER_SIZE 1024
 #define MAX_OPCODE_ARGS 2
 /* STRUCTURES */
@@ -75,5 +76,6 @@ int check_int(char *str);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void free_stack(void);
+void pint(stack_t **stack, unsigned int line_number);
 
 #endif

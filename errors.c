@@ -29,6 +29,9 @@ void print_error(int error_number, char *string, int num)
 	case PUSH:
 		fprintf(stderr, "L%d: usage : push integer\n", num);
 		break;
+	case PINT:
+		fprintf(stderr, "L%d: can't pint, stack empty\n", num);
+		break;
 	default:
 		break;
 	}

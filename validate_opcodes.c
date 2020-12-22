@@ -52,8 +52,10 @@ int validate_opcode(char **arguments, instruction_t *opcodes,
 	int i = 0;
 	int is_integer = 0;
 	int opcode_executed = FAILURE;
+	unsigned int line = 1;
 
 	for (i = 0; opcodes[i].opcode; i++)
+	{
 		if (strcmp(arguments[0], opcodes[i].opcode) == SUCCESS)
 		{
 			is_integer = check_int(arguments[1]);
@@ -80,10 +82,11 @@ int validate_opcode(char **arguments, instruction_t *opcodes,
 				exit(EXIT_FAILURE);
 			}
 			/* execute opcode */
-			opcodes[i].f(&new_stack_t, i + 1);
+			opcodes[i].f(&new_stack_t, line);
 			opcode_executed = SUCCESS;
+			line++;
 		}
-
+	}
 	return (opcode_executed);
 }
 /**

@@ -44,6 +44,22 @@ void pall(stack_t **stack, unsigned int line_number)
 	}
 }
 /**
+ * pall - prints data of the doubly linked list
+ * @stack: node of the doubly linked list
+ * @line_number: line_number of the execution
+ */
+void pint(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	if (head == NULL)
+	{
+		print_error(PINT, NULL, (int)line_number);
+		exit(EXIT_FAILURE);
+	}
+	else
+		printf("%d\n", head->n);
+}
+/**
  * free_stack - free the nodes of the doubly linked list
  */
 void free_stack(void)
