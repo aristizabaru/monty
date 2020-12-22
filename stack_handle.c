@@ -146,6 +146,16 @@ void add(stack_t **stack, unsigned int line_number)
 	}
 }
 /**
+ * nop - doesn't do anything
+ * @stack: node of the doubly linked list
+ * @line_number: line_number of the execution
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)nop;
+}
+/**
  * free_stack - free the nodes of the doubly linked list
  */
 void free_stack(void)
