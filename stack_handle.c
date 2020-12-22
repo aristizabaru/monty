@@ -95,6 +95,7 @@ void pop(stack_t **stack, unsigned int line_number)
 void swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = NULL;
+
 	(void)stack;
 	if (head == NULL || head->next == NULL)
 	{
@@ -120,6 +121,28 @@ void swap(stack_t **stack, unsigned int line_number)
 		head->next = temp;
 		head = head->prev;
 		head->prev = NULL;
+	}
+}
+/**
+ * add - adds the top two elements of the stack.
+ * @stack: node of the doubly linked list
+ * @line_number: line_number of the execution
+ */
+void add(stack_t **stack, unsigned int line_number)
+{
+	int result = 0;
+
+	(void)stack;
+	if (head == NULL || head->next == NULL)
+	{
+		print_error(SWAP, NULL, (int)line_number);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		result = head->n + head->next->n;
+		pop(NULL, line_number);
+		head->n = result;
 	}
 }
 /**

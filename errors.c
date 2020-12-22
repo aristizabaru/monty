@@ -38,6 +38,9 @@ void print_error(int error_number, char *string, int num)
 	case SWAP:
 		fprintf(stderr, "L%d: can't swap, stack too short\n", num);
 		break;
+	case ADD:
+		fprintf(stderr, "L%d: can't add, stack too short\n", num);
+		break;
 	default:
 		break;
 	}
