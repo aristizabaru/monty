@@ -101,6 +101,15 @@ void swap(stack_t **stack, unsigned int line_number)
 		print_error(SWAP, NULL, (int)line_number);
 		exit(EXIT_FAILURE);
 	}
+	else if (head->next->next == NULL)
+	{
+		temp = head->next;
+		temp->next = head;
+		head->prev = temp;
+		head->next = NULL;
+		temp->prev = NULL;
+		head = temp;
+	}
 	else
 	{
 		temp = head->next->next;
@@ -110,6 +119,7 @@ void swap(stack_t **stack, unsigned int line_number)
 		head->prev = head->next;
 		head->next = temp;
 		head = head->prev;
+		head->prev = NULL;
 	}
 }
 /**
