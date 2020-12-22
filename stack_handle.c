@@ -1,5 +1,5 @@
 
-#include "header.h"
+#include "monty.h"
 /**
  * push - push data into the stack
  * @stack: node of the doubly linked list

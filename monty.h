@@ -1,5 +1,5 @@
-#ifndef __HEADER__H__
-#define __HEADER__H__
+#ifndef __MONTY__H__
+#define __MONTY__H__
 /* HEADERS */
 #include <stdio.h>
 #include <stdlib.h>
@@ -65,10 +65,10 @@ char *buffer_to_fileinfo(char *buffer, char *file_info, int character);
 char **get_lines(char *file_info);
 int get_lineCount(char *string);
 int analyze_op(char **file_info_lines, instruction_t *opcodes,
-	       char *file_info);
+					char *file_info);
 char **get_arguments(char *string);
 int validate_opcode(char **arguments, instruction_t *opcodes,
-		    unsigned int lines, char **file_info_line, char *file_info);
+						  unsigned int lines, char **file_info_line, char *file_info);
 int _strcmp(char *str1, char *str2);
 int check_int(char *str);
 

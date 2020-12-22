@@ -1,4 +1,4 @@
-#include "header.h"
+#include "monty.h"
 /**
  * open_file - opens a file
  * @path: path of the file
