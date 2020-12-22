@@ -31,15 +31,18 @@ void pall(stack_t **stack, unsigned int line_number)
 
 	(void)stack;
 	(void)line_number;
-	if (head == NULL)
-		printf("%d\n", head->n);
-	else
+	if (head)
 	{
-		temp = head;
-		while (temp)
+		if (head->next == NULL)
+			printf("%d\n", head->n);
+		else
 		{
-			printf("%d\n", temp->n);
-			temp = temp->next;
+			temp = head;
+			while (temp)
+			{
+				printf("%d\n", temp->n);
+				temp = temp->next;
+			}
 		}
 	}
 }
@@ -58,6 +61,31 @@ void pint(stack_t **stack, unsigned int line_number)
 	}
 	else
 		printf("%d\n", head->n);
+}
+/**
+ * pop - removes the top element of the stack.
+ * @stack: node of the doubly linked list
+ * @line_number: line_number of the execution
+ */
+void pop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	if (head == NULL)
+	{
+		print_error(POP, NULL, (int)line_number);
+		exit(EXIT_FAILURE);
+	}
+	else if (head->next == NULL)
+	{
+		free(head);
+		head = NULL;
+	}
+	else
+	{
+		head = head->next;
+		free(head->prev);
+		head->prev = NULL;
+	}
 }
 /**
  * free_stack - free the nodes of the doubly linked list
