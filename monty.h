@@ -21,6 +21,7 @@
 #define PUSH 7
 #define PINT 8
 #define POP 9
+#define SWAP 10
 #define BUFFER_SIZE 1024
 #define MAX_OPCODE_ARGS 2
 /* STRUCTURES */
@@ -79,5 +80,6 @@ void pall(stack_t **stack, unsigned int line_number);
 void free_stack(void);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
 
 #endif

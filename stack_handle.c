@@ -88,6 +88,31 @@ void pop(stack_t **stack, unsigned int line_number)
 	}
 }
 /**
+ * swap - swaps the top two elements of the stack
+ * @stack: node of the doubly linked list
+ * @line_number: line_number of the execution
+ */
+void swap(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = NULL;
+	(void)stack;
+	if (head == NULL || head->next == NULL)
+	{
+		print_error(SWAP, NULL, (int)line_number);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		temp = head->next->next;
+		temp->prev = head;
+		head->next->next = head;
+		head->next->prev = NULL;
+		head->prev = head->next;
+		head->next = temp;
+		head = head->prev;
+	}
+}
+/**
  * free_stack - free the nodes of the doubly linked list
  */
 void free_stack(void)
