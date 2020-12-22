@@ -81,6 +81,11 @@ int validate_opcode(char **arguments, instruction_t *opcodes,
 				free(arguments);
 				exit(EXIT_FAILURE);
 			}
+			else if (strcmp(arguments[0], "nop") == SUCCESS)
+			{
+				opcode_executed = SUCCESS;
+				break;
+			}
 			/* execute opcode */
 			opcodes[i].f(&new_stack_t, line);
 			opcode_executed = SUCCESS;
