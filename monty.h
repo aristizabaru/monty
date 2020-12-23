@@ -28,9 +28,9 @@
  */
 typedef struct stack_s
 {
-   int n;
-   struct stack_s *prev;
-   struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -43,8 +43,8 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-   char *opcode;
-   void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /**
@@ -57,17 +57,17 @@ typedef struct instruction_s
  */
 typedef struct global_s
 {
-   stack_t *head;
-   /* ssize_t top; */
-   unsigned int current_line;
-   unsigned int lines_total;
-   char *file_data;
-   unsigned int data_index;
-   char *file_name;
-   char *current_opcode;
-   char *current_opcode_int;
-   instruction_t opcodes_list[VALID_OPCODES + 1];
-   char *free_memory[ITEMS_TO_FREE];
+	stack_t *head;
+	/* ssize_t top; */
+	unsigned int current_line;
+	unsigned int lines_total;
+	char *file_data;
+	unsigned int data_index;
+	char *file_name;
+	char *current_opcode;
+	char *current_opcode_int;
+	instruction_t opcodes_list[VALID_OPCODES + 1];
+	char *free_memory[ITEMS_TO_FREE];
 } global_t;
 
 /* GLOBAL VARIABLES */
