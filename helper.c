@@ -4,79 +4,92 @@
  * @path: string representation of a path
  * Return: the file name
  */
-char *get_fileName(char *path)
+void get_fileName(char *path)
 {
-	char *file_name = NULL;
-	int length = strlen(path);
-	int i = length;
-	int length_file = 0;
+        char *file_name = NULL;
+        int length = strlen(path);
+        int i = length;
+        int length_file = 0;
 
-	for (--i; i >= 0; i--)
-		if (path[i] == '/')
-			break;
-	length_file = length - i;
-	file_name = malloc(length_file * sizeof(*file_name));
-	if (file_name == NULL)
-	{
-		free(path);
-		print_error(MALLOC, NULL, 0);
-		exit(EXIT_FAILURE);
-	}
-	length = i + 1;
-	for (i = 0; i < length_file - 1; i++, length++)
-	{
-		file_name[i] = path[length];
-	}
-	file_name[i] = '\0';
-	return (file_name);
+        for (--i; i >= 0; i--)
+                if (path[i] == '/')
+                        break;
+        length_file = length - i;
+        file_name = malloc(length_file * sizeof(*file_name));
+        if (file_name == NULL)
+                error_malloc();
+        monty_data.free_memory[0] = file_name;
+        length = i + 1;
+        for (i = 0; i < length_file - 1; i++, length++)
+        {
+                file_name[i] = path[length];
+        }
+        file_name[i] = '\0';
+        monty_data.file_name = file_name;
 }
+
 /**
  * get_lineCount - counts the lines in a file
  * @string: a single buffer with all the info
- * Description: the lines are representate with \n
- * Return: line count
+ * Description: the lines ends with \n
+ * Return: number of lines
  */
-int get_lineCount(char *string)
+unsigned int get_lineCount(char *string)
 {
-	int lines = 0;
-	int i = 0;
+        int lines = 0;
+        int i = 0;
+        if (string)
+        {
+                for (; string[i]; i++)
+                {
+                        if (string[i] == '\n')
+                                lines++;
+                }
+                lines++;
+        }
 
-	for (; string[i]; i++)
-	{
-		if (string[i] == '\n')
-			lines++;
-	}
-	return (lines + 1);
+        return (lines);
 }
 /**
- * get_lines - divides a string into tokens
- * @file_info: a single buffer with all the info to be tokenizated
- * Return: matrix with tokens
+ * init_opcodes - initialize upcodes
  */
-char **get_lines(char *file_info)
+void init_opcodes(void)
 {
-	char **file_info_lines = NULL;
-	char *token = NULL;
-	int line_count = 0;
-	int i = 0;
+        monty_data.opcodes_list[0].opcode = "push";
+        monty_data.opcodes_list[0].f = push;
+        monty_data.opcodes_list[1].opcode = "pall";
+        monty_data.opcodes_list[1].f = pall;
+        monty_data.opcodes_list[2].opcode = "pint";
+        monty_data.opcodes_list[2].f = pall;
 
-	line_count = get_lineCount(file_info);
-	file_info_lines = malloc((line_count + 1) * sizeof(token));
-	if (file_info_lines == NULL)
-	{
-		print_error(MALLOC, NULL, 0);
-		free(file_info);
-		exit(EXIT_FAILURE);
-	}
-	token = strtok(file_info, "\n");
-	while (token != NULL)
-	{
-		file_info_lines[i] = token;
-		token = strtok(NULL, "\n");
-		i++;
-	}
-	file_info_lines[line_count] = NULL;
-	return (file_info_lines);
+        monty_data.opcodes_list[3].opcode = NULL;
+        monty_data.opcodes_list[3].f = NULL;
+}
+
+/**
+ * cmp_code - compares two opcodes
+ * @real_opcode: real opcode
+ * @opcode: opcode
+ *
+ * Return: SUCCESS if match, FAIL if there's not a match
+ */
+int cmp_code(char *real_opcode, char *opcode)
+{
+        int i = 0;
+
+        for (; real_opcode[i]; i++)
+        {
+                if (opcode[i])
+                {
+                        if (real_opcode[i] != opcode[i])
+                                return (FAILURE);
+                }
+                else
+                        return (FAILURE);
+        }
+        if (opcode[i])
+                return (FAILURE);
+        return (SUCCESS);
 }
 
 /**
@@ -86,11 +99,11 @@ char **get_lines(char *file_info)
  */
 int check_int(char *str)
 {
-	int i = 0;
+        int i = 0;
 
-	if (str)
-		for (; str[i]; i++)
-			if (str[i] >= 48 && str[i] <= 57)
-				return (SUCCESS);
-	return (FAILURE);
+        if (str)
+                for (; str[i]; i++)
+                        if (str[i] >= 48 && str[i] <= 57)
+                                return (SUCCESS);
+        return (FAILURE);
 }

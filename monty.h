@@ -8,21 +8,14 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
+
 /* MACROS */
-#define SUCCESS 0
-#define FAILURE -1
-#define USAGE 2
-#define OPEN_FILE 3
-#define MALLOC 4
-#define READ 5
-#define OPCODE 6
-#define PUSH 7
-#define PINT 8
-#define POP 9
-#define SWAP 10
-#define ADD 11
+#define VALID_OPCODES 3
+#define ITEMS_TO_FREE 3
 #define BUFFER_SIZE 1024
-#define MAX_OPCODE_ARGS 2
+#define SUCCESS 1
+#define FAILURE 0
+
 /* STRUCTURES */
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -35,9 +28,9 @@
  */
 typedef struct stack_s
 {
-	int n;
-	struct stack_s *prev;
-	struct stack_s *next;
+   int n;
+   struct stack_s *prev;
+   struct stack_s *next;
 } stack_t;
 
 /**
@@ -50,37 +43,77 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+   char *opcode;
+   void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/* GLOBAL VARIABLES */
-extern stack_t *head;
+/**
+ * struct global_s - head, top, opcode linenumber, selected opcode, free
+ * @opcode: the opcode
+ * @f: function to handle the opcode
+ *
+ * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO Holberton project
+ */
+typedef struct global_s
+{
+   stack_t *head;
+   /* ssize_t top; */
+   unsigned int current_line;
+   unsigned int lines_total;
+   char *file_data;
+   unsigned int data_index;
+   char *file_name;
+   char *current_opcode;
+   char *current_opcode_int;
+   instruction_t opcodes_list[VALID_OPCODES + 1];
+   char *free_memory[ITEMS_TO_FREE];
+} global_t;
 
-/* PROTOTYPES */
-void print_error(int error_number, char *string, int num);
-char *get_fileName(char *path);
-int open_file(char *path, char *file_name);
-char *read_file(int fd_monty, char *file_name);
-char *init_buffer(int buff_size);
-char *buffer_to_fileinfo(char *buffer, char *file_info, int character);
-char **get_lines(char *file_info);
-int get_lineCount(char *string);
-int analyze_op(char **file_info_lines, instruction_t *opcodes,
-					char *file_info);
-char **get_arguments(char *string);
-int validate_opcode(char **arguments, instruction_t *opcodes,
-						  unsigned int lines, char **file_info_line, char *file_info);
-int _strcmp(char *str1, char *str2);
+/* GLOBAL VARIABLES */
+extern global_t monty_data;
+
+/* PROTOYYPES */
+/* errors.c */
+void error_usage(void);
+void error_malloc(void);
+void error_open(void);
+void error_read(void);
+void error_opcode(void);
+
+/* errors2.c */
+void error_push(void);
+void error_pint(void);
+
+/* helper.c */
+void get_fileName(char *path);
+unsigned int get_lineCount(char *string);
+void init_opcodes(void);
+int cmp_code(char *real_opcode, char *opcode);
 int check_int(char *str);
 
+/* helper2.c */
+void skip_line(void);
+
+/* memory_handle.c */
+void free_all(void);
+
+/* read_handle.c */
+unsigned int open_file(char *path);
+char *read_file(unsigned int fd_monty);
+char *copy_data(char *buffer, char *data, int characters);
+char *allocate_memory(int size);
+
+/* execute_monty.c */
+void exucute_monty(void);
+char *get_opcode(void);
+char *copy_opcode(unsigned int firts_idx, unsigned int last_idx);
+void execute_opcode(void);
+int get_opcode_idx(void);
+
+/* opcodes_exec.c */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void free_stack(void);
-void pint(stack_t **stack, unsigned int line_number);
-void pop(stack_t **stack, unsigned int line_number);
-void swap(stack_t **stack, unsigned int line_number);
-void add(stack_t **stack, unsigned int line_number);
-void nop(stack_t **stack, unsigned int line_number);
 
-#endif
+#endif /* __MONTY__H__ */
