@@ -10,7 +10,7 @@
 #include <string.h>
 
 /* MACROS */
-#define VALID_OPCODES 7
+#define VALID_OPCODES 8
 #define ITEMS_TO_FREE 3
 #define BUFFER_SIZE 1024
 #define SUCCESS 1
@@ -93,6 +93,9 @@ void error_pop(void);
 void error_swap(void);
 void error_add(void);
 
+/* errors3.c */
+void error_sub(void);
+
 /* helper.c */
 void get_fileName(char *path);
 unsigned int get_lineCount(char *string);
@@ -129,5 +132,6 @@ void pop(stack_t **stack, unsigned int line_number);
 /* opcodes_exe2.c */
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
 
 #endif /* __MONTY__H__ */

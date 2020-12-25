@@ -57,3 +57,21 @@ void add(stack_t **stack, unsigned int line_number)
                 pop(stack, line_number);
         }
 }
+
+/**
+ * sub - subtracts the top element of the stack from the second top element of the stac
+ * @stack: node of the doubly linked list
+ * @line_number: line_number of the execution
+ */
+void sub(stack_t **stack, unsigned int line_number)
+{
+        stack_t *head = monty_data.head;
+
+        if (!head || !head->next)
+                error_sub();
+        else
+        {
+                head->next->n -= head->n;
+                pop(stack, line_number);
+        }
+}
