@@ -10,7 +10,7 @@
 #include <string.h>
 
 /* MACROS */
-#define VALID_OPCODES 4
+#define VALID_OPCODES 5
 #define ITEMS_TO_FREE 3
 #define BUFFER_SIZE 1024
 #define SUCCESS 1
@@ -123,5 +123,8 @@ void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
+
+/* opcodes_exe.c */
+void swap(stack_t **stack, unsigned int line_number);
 
 #endif /* __MONTY__H__ */

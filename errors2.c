@@ -31,3 +31,14 @@ void error_pop(void)
 	free_stack();
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * error_swap - prints SWAP error message and exit program
+ */
+void error_swap(void)
+{
+	fprintf(stderr, "L%d: can't swap, stack too short\n", monty_data.current_line);
+	free_all();
+	free_stack();
+	exit(EXIT_FAILURE);
+}
