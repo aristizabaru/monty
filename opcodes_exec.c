@@ -1,5 +1,24 @@
 #include "monty.h"
 /**
+ * free_stack - free the nodes of the doubly linked list
+ */
+void free_stack(void)
+{
+	stack_t *head = monty_data.head;
+
+	if (head != NULL)
+	{
+		while (head->next)
+		{
+			head = head->next;
+			free(head->prev);
+		}
+		free(head);
+		head = NULL;
+	}
+}
+
+/**
  * push - push data into the stack
  * @stack: node of the doubly linked list
  * @line_number: line_number of the execution
@@ -75,20 +94,30 @@ void pint(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * free_stack - free the nodes of the doubly linked list
+ * pop - removes the top element of the stack
+ * @stack: node of the doubly linked list
+ * @line_number: line_number of the execution
  */
-void free_stack(void)
+void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head = monty_data.head;
+	stack_t *temp = NULL;
 
-	if (head != NULL)
+	(void)line_number;
+	free(*stack);
+	if (head->next == NULL)
 	{
-		while (head->next)
-		{
-			head = head->next;
-			free(head->prev);
-		}
 		free(head);
-		head = NULL;
+		monty_data.head = NULL;
+	}
+	else if (!head)
+		error_pop();
+	else
+	{
+		temp = head->next;
+		free(head);
+		temp->prev = NULL;
+		head = temp;
+		monty_data.head = head;
 	}
 }

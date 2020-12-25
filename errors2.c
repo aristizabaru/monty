@@ -20,3 +20,14 @@ void error_pint(void)
 	free_stack();
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * error_pop - prints POP error message and exit program
+ */
+void error_pop(void)
+{
+	fprintf(stderr, "L%d: can't pop an empty stack\n", monty_data.current_line);
+	free_all();
+	free_stack();
+	exit(EXIT_FAILURE);
+}
