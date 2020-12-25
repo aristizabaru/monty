@@ -93,12 +93,12 @@ void error_pint(void);
 /* helper.c */
 void get_fileName(char *path);
 unsigned int get_lineCount(char *string);
-void init_opcodes(void);
 int cmp_code(char *real_opcode, char *opcode);
 int check_int(char *str);
-
-/* helper2.c */
 void skip_line(void);
+
+/* init_opcodes.c */
+void init_opcodes(void);
 
 /* memory_handle.c */
 void free_all(void);
@@ -119,6 +119,7 @@ int get_opcode_idx(void);
 /* opcodes_exec.c */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
 void free_stack(void);
 
 #endif /* __MONTY__H__ */

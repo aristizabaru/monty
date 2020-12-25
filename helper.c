@@ -51,21 +51,6 @@ unsigned int get_lineCount(char *string)
 
 	return (lines);
 }
-/**
- * init_opcodes - initialize upcodes
- */
-void init_opcodes(void)
-{
-	monty_data.opcodes_list[0].opcode = "push";
-	monty_data.opcodes_list[0].f = push;
-	monty_data.opcodes_list[1].opcode = "pall";
-	monty_data.opcodes_list[1].f = pall;
-	monty_data.opcodes_list[2].opcode = "pint";
-	monty_data.opcodes_list[2].f = pall;
-
-	monty_data.opcodes_list[3].opcode = NULL;
-	monty_data.opcodes_list[3].f = NULL;
-}
 
 /**
  * cmp_code - compares two opcodes
@@ -112,4 +97,18 @@ int check_int(char *str)
 				result = FAILURE;
 		}
 	return (result);
+}
+
+/**
+ * skip_line - skips a line in a array
+ * Description: the end of line is '\n'
+ */
+void skip_line(void)
+{
+	unsigned int idx = monty_data.data_index;
+
+	for (; monty_data.file_data[idx] && monty_data.file_data[idx] != '\n'; idx++)
+		;
+	if (monty_data.file_data[idx])
+		monty_data.data_index = idx + 1;
 }

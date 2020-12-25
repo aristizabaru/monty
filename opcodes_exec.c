@@ -62,7 +62,6 @@ void pall(stack_t **stack, unsigned int line_number)
  * @stack: node of the doubly linked list
  * @line_number: line_number of the execution
  */
-
 void pint(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head = monty_data.head;
