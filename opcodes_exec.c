@@ -105,13 +105,13 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 	free(*stack);
-	if (head->next == NULL)
+	if (!head)
+		error_pop();
+	else if (head->next == NULL)
 	{
 		free(head);
 		monty_data.head = NULL;
 	}
-	else if (!head)
-		error_pop();
 	else
 	{
 		temp = head->next;
