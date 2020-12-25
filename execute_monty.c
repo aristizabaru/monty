@@ -36,12 +36,15 @@ void execute_opcode(void)
 	stack_t *new_node = NULL;
 
 	opcode_idx = get_opcode_idx();
+	/* check error in opcode */
 	if (opcode_idx == -1)
 		error_opcode();
+	/* check if opcode is "nop" */
+	if (opcode_idx == 6)
+		return;
 	new_node = malloc(sizeof(*new_node));
 	if (new_node == NULL)
 		error_malloc();
-	/* liberate new node en moty data si exite y asignar nuevo */
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	/* call opcode exec */
