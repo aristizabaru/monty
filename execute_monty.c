@@ -91,8 +91,9 @@ char *get_opcode(void)
 				if (c == ' ' || c == '\n' || monty_data.file_data[idx + 1] == '\0')
 				{
 					last_idx = idx;
-					if (monty_data.file_data[idx + 1] == '\0')
-						last_idx += 1;
+					/* takes the last char of a file if there is EOF */
+					/* if (monty_data.file_data[idx + 1] == '\0')
+						last_idx += 1; */
 					monty_data.data_index = last_idx;
 					opcode = copy_opcode(firts_idx, last_idx);
 					return (opcode);
