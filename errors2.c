@@ -42,3 +42,14 @@ void error_swap(void)
 	free_stack();
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * error_add - prints ADD error message and exit program
+ */
+void error_add(void)
+{
+	fprintf(stderr, "L%d: can't add, stack too short\n", monty_data.current_line);
+	free_all();
+	free_stack();
+	exit(EXIT_FAILURE);
+}

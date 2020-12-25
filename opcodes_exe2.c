@@ -39,3 +39,21 @@ void swap(stack_t **stack, unsigned int line_number)
         }
         monty_data.head = head;
 }
+
+/**
+ * add - adds the top two elements of the stack
+ * @stack: node of the doubly linked list
+ * @line_number: line_number of the execution
+ */
+void add(stack_t **stack, unsigned int line_number)
+{
+        stack_t *head = monty_data.head;
+
+        if (!head || !head->next)
+                error_add();
+        else
+        {
+                head->next->n += head->n;
+                pop(stack, line_number);
+        }
+}

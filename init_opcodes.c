@@ -14,7 +14,9 @@ void init_opcodes(void)
         monty_data.opcodes_list[3].f = pop;
         monty_data.opcodes_list[4].opcode = "swap";
         monty_data.opcodes_list[4].f = swap;
+        monty_data.opcodes_list[5].opcode = "add";
+        monty_data.opcodes_list[5].f = add;
 
-        monty_data.opcodes_list[5].opcode = NULL;
-        monty_data.opcodes_list[5].f = NULL;
+        monty_data.opcodes_list[6].opcode = NULL;
+        monty_data.opcodes_list[6].f = NULL;
 }
