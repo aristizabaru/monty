@@ -89,6 +89,7 @@ void error_opcode(void);
 /* errors2.c */
 void error_push(void);
 void error_pint(void);
+void error_pop(void);
 
 /* helper.c */
 void get_fileName(char *path);
