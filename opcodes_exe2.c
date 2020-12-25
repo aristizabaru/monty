@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- * pop - removes the top element of the stack
+ * swap - swaps the top two elements of the stack
  * @stack: node of the doubly linked list
  * @line_number: line_number of the execution
  */
@@ -19,7 +19,7 @@ void swap(stack_t **stack, unsigned int line_number)
         {
                 temp_left = head;
                 temp_middle = head->next;
-                temp_right = temp_middle->next;
+                temp_right = head->next->next;
                 head = temp_middle;
                 head->prev = NULL;
                 head->next = temp_left;
