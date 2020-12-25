@@ -90,6 +90,7 @@ void error_opcode(void);
 void error_push(void);
 void error_pint(void);
 void error_pop(void);
+void error_swap(void);
 
 /* helper.c */
 void get_fileName(char *path);
