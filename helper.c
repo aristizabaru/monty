@@ -101,10 +101,15 @@ int cmp_code(char *real_opcode, char *opcode)
 int check_int(char *str)
 {
 	int i = 0;
+	int result = FAILURE;
 
 	if (str)
 		for (; str[i]; i++)
+		{
 			if (str[i] >= 48 && str[i] <= 57)
-				return (SUCCESS);
-	return (FAILURE);
+				result = SUCCESS;
+			else
+				result = FAILURE;
+		}
+	return (result);
 }
