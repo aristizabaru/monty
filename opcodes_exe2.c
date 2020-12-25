@@ -15,17 +15,27 @@ void swap(stack_t **stack, unsigned int line_number)
         free(*stack);
         if (!head || !head->next)
                 error_swap();
+        else if (!head->next->next)
+        {
+                temp_left = head;
+                temp_right = head->next;
+                head = temp_right;
+                temp_left->prev = head;
+                temp_left->next = NULL;
+                temp_right->prev = NULL;
+                temp_right->next = temp_left;
+        }
         else
         {
                 temp_left = head;
                 temp_middle = head->next;
-                temp_right = head->next->next;
+                temp_right = temp_middle->next;
                 head = temp_middle;
                 head->prev = NULL;
                 head->next = temp_left;
                 temp_left->prev = head;
                 temp_left->next = temp_right;
                 temp_right->prev = temp_left;
-                monty_data.head = head;
         }
+        monty_data.head = head;
 }
