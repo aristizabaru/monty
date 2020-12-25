@@ -21,6 +21,6 @@ void init_opcodes(void)
         monty_data.opcodes_list[7].opcode = "sub";
         monty_data.opcodes_list[7].f = sub;
 
-        monty_data.opcodes_list[7].opcode = NULL;
-        monty_data.opcodes_list[7].f = NULL;
+        monty_data.opcodes_list[8].opcode = NULL;
+        monty_data.opcodes_list[8].f = NULL;
 }
