@@ -48,12 +48,17 @@ typedef struct instruction_s
 } instruction_t;
 
 /**
- * struct global_s - head, top, opcode linenumber, selected opcode, free
- * @opcode: the opcode
- * @f: function to handle the opcode
- *
- * Description: opcode and its function
- * for stack, queues, LIFO, FIFO Holberton project
+ * struct global_s - struct for magament data inside the opcode program
+ * @head: porinter to first node in the stack linked list
+ * @current_line: current line of execution in file
+ * @lines_total: total number of lines un file
+ * @file_data: the data of the file loaded into the program
+ * @data_index: current index in the data. What's been read
+ * @file_name: the name of the file loaded into the program
+ * @current_opcode: current execution of opcode
+ * @current_opcode_int: current execution int of current opcode
+ * @opcodes_list: list of valid opcodes and their execution functions
+ * @free_memory: list of allocated string to be free
  */
 typedef struct global_s
 {

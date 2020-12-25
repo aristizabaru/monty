@@ -2,7 +2,6 @@
 /**
  * open_file - opens a file
  * @path: path of the file
- * @file_name: name of the file
  * Return: file descriptor of the file
  */
 unsigned int open_file(char *path)
@@ -18,7 +17,6 @@ unsigned int open_file(char *path)
 /**
  * read_file - read file and pass it to an a buffer array
  * @fd_monty: file descriptor of the file
- * @file_name: name of the file
  * Return: buffer with file info
  */
 char *read_file(unsigned int fd_monty)
@@ -27,8 +25,7 @@ char *read_file(unsigned int fd_monty)
 	char buffer[BUFFER_SIZE];
 	char *raw_data = NULL;
 
-	do
-	{
+	do {
 		characters = read(fd_monty, buffer, BUFFER_SIZE);
 		if (characters > 0)
 			raw_data = copy_data(buffer, raw_data, characters);
