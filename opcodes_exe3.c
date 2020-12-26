@@ -33,7 +33,7 @@ void pchar(stack_t **stack, unsigned int line_number)
         free(*stack);
         if (!head)
                 error_pchar(EMPTY_STACK);
-        else if (head->n >= 32 && head->n >= 126)
+        else if (head->n < 32 && head->n > 126)
                 error_pchar(OUT_OF_RANGE);
         else
                 printf("%c\n", head->n);
