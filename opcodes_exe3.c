@@ -36,5 +36,5 @@ void pchar(stack_t **stack, unsigned int line_number)
         else if (head->n > 126)
                 error_pchar(OUT_OF_RANGE);
         else
-                printf("%c", head->n);
+                printf("%c\n", head->n);
 }
