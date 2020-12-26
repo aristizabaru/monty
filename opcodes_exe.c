@@ -59,7 +59,8 @@ void pall(stack_t **stack, unsigned int line_number)
 	stack_t *head = monty_data.head;
 
 	(void)line_number;
-	free(*stack);
+	if (stack)
+		free(*stack);
 	if (head)
 	{
 		if (head->next == NULL)
@@ -86,7 +87,8 @@ void pint(stack_t **stack, unsigned int line_number)
 	stack_t *head = monty_data.head;
 
 	(void)line_number;
-	free(*stack);
+	if (stack)
+		free(*stack);
 	if (head)
 		printf("%d\n", head->n);
 	else
@@ -104,7 +106,8 @@ void pop(stack_t **stack, unsigned int line_number)
 	stack_t *temp = NULL;
 
 	(void)line_number;
-	free(*stack);
+	if (stack)
+		free(*stack);
 	if (!head)
 		error_pop();
 	else if (head->next == NULL)

@@ -12,7 +12,8 @@ void swap(stack_t **stack, unsigned int line_number)
         stack_t *temp_left = NULL;
 
         (void)line_number;
-        free(*stack);
+        if (stack)
+                free(*stack);
         if (!head || !head->next)
                 error_swap();
         else if (!head->next->next)
@@ -49,13 +50,14 @@ void add(stack_t **stack, unsigned int line_number)
 {
         stack_t *head = monty_data.head;
 
-        free(*stack);
+        if (stack)
+                free(*stack);
         if (!head || !head->next)
                 error_add();
         else
         {
                 head->next->n += head->n;
-                pop(stack, line_number);
+                pop(NULL, line_number);
         }
 }
 
@@ -68,13 +70,14 @@ void sub(stack_t **stack, unsigned int line_number)
 {
         stack_t *head = monty_data.head;
 
-        free(*stack);
+        if (stack)
+                free(*stack);
         if (!head || !head->next)
                 error_sub();
         else
         {
                 head->next->n -= head->n;
-                pop(stack, line_number);
+                pop(NULL, line_number);
         }
 }
 
@@ -87,7 +90,8 @@ void divi(stack_t **stack, unsigned int line_number)
 {
         stack_t *head = monty_data.head;
 
-        free(*stack);
+        if (stack)
+                free(*stack);
         if (!head || !head->next)
                 error_divi(SHORT_STACK);
         else if (head->n == 0)
@@ -95,7 +99,7 @@ void divi(stack_t **stack, unsigned int line_number)
         else
         {
                 head->next->n /= head->n;
-                pop(stack, line_number);
+                pop(NULL, line_number);
         }
 }
 
@@ -108,12 +112,13 @@ void mul(stack_t **stack, unsigned int line_number)
 {
         stack_t *head = monty_data.head;
 
-        free(*stack);
+        if (stack)
+                free(*stack);
         if (!head || !head->next)
                 error_mul();
         else
         {
                 head->next->n *= head->n;
-                pop(stack, line_number);
+                pop(NULL, line_number);
         }
 }

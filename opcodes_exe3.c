@@ -8,7 +8,8 @@ void mod(stack_t **stack, unsigned int line_number)
 {
         stack_t *head = monty_data.head;
 
-        free(*stack);
+        if (stack)
+                free(*stack);
         if (!head || !head->next)
                 error_mod(SHORT_STACK);
         else if (head->n == 0)
@@ -16,7 +17,7 @@ void mod(stack_t **stack, unsigned int line_number)
         else
         {
                 head->next->n %= head->n;
-                pop(stack, line_number);
+                pop(NULL, line_number);
         }
 }
 
@@ -30,7 +31,8 @@ void pchar(stack_t **stack, unsigned int line_number)
         stack_t *head = monty_data.head;
 
         (void)line_number;
-        free(*stack);
+        if (stack)
+                free(*stack);
         if (!head)
                 error_pchar(EMPTY_STACK);
         else if (head->n < 32 || head->n > 126)

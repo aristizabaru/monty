@@ -130,7 +130,7 @@ char *copy_opcode(unsigned int firts_idx, unsigned int last_idx);
 void execute_opcode(void);
 int get_opcode_idx(void);
 
-/* opcodes_exec.c */
+/* opcodes_exe.c */
 void free_stack(void);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
