@@ -56,14 +56,25 @@ void pstr(stack_t **stack, unsigned int line_number)
                 free(*stack);
         if (!head)
                 printf("\n");
-        else if (!head->next && head->n != 0 && (head->n > 31 && head->n < 127))
-                printf("%c\n", head->n);
+        else if (!head->next)
+        {
+                if (head->n != 0 && (head->n > 31 && head->n < 127))
+                        printf("%c\n", head->n);
+                else
+                        printf("\n");
+        }
         else
         {
                 temp = head;
-                while (temp && temp->n != 0 && (temp->n > 31 && temp->n < 127))
+                while (temp)
                 {
-                        printf("%c\n", temp->n);
+                        if (temp->n != 0 && (temp->n > 31 && temp->n < 127))
+                                printf("%c\n", temp->n);
+                        else
+                        {
+                                printf("\n");
+                                break;
+                        }
                         temp = temp->next;
                 }
         }
