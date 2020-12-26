@@ -18,7 +18,7 @@ void exucute_monty(void)
 			free(monty_data.current_opcode);
 		monty_data.current_opcode = get_opcode();
 		monty_data.free_memory[2] = monty_data.current_opcode;
-		if (monty_data.current_opcode == NULL)
+		if (monty_data.current_opcode == NULL || monty_data.current_opcode[0] == '#')
 		{
 			skip_line();
 			continue;
@@ -39,8 +39,8 @@ void execute_opcode(void)
 	/* check error in opcode */
 	if (opcode_idx == -1)
 		error_opcode();
-	/* check if opcode is "nop" or "#" */
-	if (opcode_idx == 6 || opcode_idx == 11)
+	/* check if opcode is "nop"*/
+	if (opcode_idx == 6)
 		return;
 	new_node = malloc(sizeof(*new_node));
 	if (new_node == NULL)
