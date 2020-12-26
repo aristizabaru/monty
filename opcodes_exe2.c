@@ -49,6 +49,7 @@ void add(stack_t **stack, unsigned int line_number)
 {
         stack_t *head = monty_data.head;
 
+        free(*stack);
         if (!head || !head->next)
                 error_add();
         else
@@ -67,6 +68,7 @@ void sub(stack_t **stack, unsigned int line_number)
 {
         stack_t *head = monty_data.head;
 
+        free(*stack);
         if (!head || !head->next)
                 error_sub();
         else
@@ -85,6 +87,7 @@ void divi(stack_t **stack, unsigned int line_number)
 {
         stack_t *head = monty_data.head;
 
+        free(*stack);
         if (!head || !head->next)
                 error_divi(SHORT_STACK);
         else if (head->n == 0)
@@ -105,6 +108,7 @@ void mul(stack_t **stack, unsigned int line_number)
 {
         stack_t *head = monty_data.head;
 
+        free(*stack);
         if (!head || !head->next)
                 error_mul();
         else

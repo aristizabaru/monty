@@ -10,13 +10,15 @@
 #include <string.h>
 
 /* MACROS */
-#define VALID_OPCODES 11
+#define VALID_OPCODES 12
 #define ITEMS_TO_FREE 3
 #define BUFFER_SIZE 1024
 #define SUCCESS 1
 #define FAILURE 0
 #define SHORT_STACK 0
 #define DIV_BY_0 1
+#define EMPTY_STACK 0
+#define OUT_OF_RANGE 1
 
 /* STRUCTURES */
 /**
@@ -100,6 +102,7 @@ void error_sub(void);
 void error_divi(int code);
 void error_mul(void);
 void error_mod(int code);
+void error_pchar(int code);
 
 /* helper.c */
 void get_fileName(char *path);
@@ -143,5 +146,6 @@ void mul(stack_t **stack, unsigned int line_number);
 
 /* opcodes_exe3.c */
 void mod(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
 
 #endif /* __MONTY__H__ */

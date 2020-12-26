@@ -11,7 +11,7 @@ void error_sub(void)
 }
 
 /**
- * error_divi - prints SUB error message and exit program
+ * error_divi - prints DIVI error message and exit program
  */
 void error_divi(int code)
 {
@@ -32,7 +32,7 @@ void error_divi(int code)
 }
 
 /**
- * error_sub - prints SUB error message and exit program
+ * error_sub - prints MUL error message and exit program
  */
 void error_mul(void)
 {
@@ -43,7 +43,7 @@ void error_mul(void)
 }
 
 /**
- * error_divi - prints SUB error message and exit program
+ * error_divi - prints MOD error message and exit program
  */
 void error_mod(int code)
 {
@@ -54,6 +54,27 @@ void error_mod(int code)
                 break;
         case DIV_BY_0:
                 fprintf(stderr, "L%d: division by zero\n", monty_data.current_line);
+                break;
+        default:
+                break;
+        }
+        free_all();
+        free_stack();
+        exit(EXIT_FAILURE);
+}
+
+/**
+ * error_divi - prints PCHAR error message and exit program
+ */
+void error_pchar(int code)
+{
+        switch (code)
+        {
+        case EMPTY_STACK:
+                fprintf(stderr, "L%d: can't pchar, stack empty\n", monty_data.current_line);
+                break;
+        case OUT_OF_RANGE:
+                fprintf(stderr, "L%d: can't pchar, value out of range\n", monty_data.current_line);
                 break;
         default:
                 break;
