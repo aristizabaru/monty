@@ -26,7 +26,9 @@ void init_opcodes(void)
         monty_data.opcodes_list[9].f = mul;
         monty_data.opcodes_list[10].opcode = "mod";
         monty_data.opcodes_list[10].f = mod;
+        monty_data.opcodes_list[11].opcode = "#";
+        monty_data.opcodes_list[11].f = mod;
 
-        monty_data.opcodes_list[11].opcode = NULL;
-        monty_data.opcodes_list[11].f = NULL;
+        monty_data.opcodes_list[12].opcode = NULL;
+        monty_data.opcodes_list[12].f = NULL;
 }
