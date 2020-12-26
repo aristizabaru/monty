@@ -81,7 +81,7 @@ void sub(stack_t **stack, unsigned int line_number)
  * @stack: node of the doubly linked list
  * @line_number: line_number of the execution
  */
-void div(stack_t **stack, unsigned int line_number)
+void divi(stack_t **stack, unsigned int line_number)
 {
         stack_t *head = monty_data.head;
 
