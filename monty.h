@@ -10,11 +10,13 @@
 #include <string.h>
 
 /* MACROS */
-#define VALID_OPCODES 8
+#define VALID_OPCODES 9
 #define ITEMS_TO_FREE 3
 #define BUFFER_SIZE 1024
 #define SUCCESS 1
 #define FAILURE 0
+#define SHORT_STACK 0
+#define DIV_BY_0 1
 
 /* STRUCTURES */
 /**
@@ -95,6 +97,7 @@ void error_add(void);
 
 /* errors3.c */
 void error_sub(void);
+void error_div(int code);
 
 /* helper.c */
 void get_fileName(char *path);
@@ -133,5 +136,6 @@ void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
+void div(stack_t **stack, unsigned int line_number);
 
 #endif /* __MONTY__H__ */

@@ -75,3 +75,23 @@ void sub(stack_t **stack, unsigned int line_number)
                 pop(stack, line_number);
         }
 }
+
+/**
+ * div - divides the second top element of the stack by the top element of the stack
+ * @stack: node of the doubly linked list
+ * @line_number: line_number of the execution
+ */
+void div(stack_t **stack, unsigned int line_number)
+{
+        stack_t *head = monty_data.head;
+
+        if (!head || !head->next)
+                error_div(SHORT_STACK);
+        else if (head->n == 0)
+                error_div(DIV_BY_0);
+        else
+        {
+                head->next->n /= head->n;
+                pop(stack, line_number);
+        }
+}
