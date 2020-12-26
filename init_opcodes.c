@@ -22,7 +22,9 @@ void init_opcodes(void)
         monty_data.opcodes_list[7].f = sub;
         monty_data.opcodes_list[8].opcode = "div";
         monty_data.opcodes_list[8].f = divi;
+        monty_data.opcodes_list[9].opcode = "mul";
+        monty_data.opcodes_list[9].f = mul;
 
-        monty_data.opcodes_list[9].opcode = NULL;
-        monty_data.opcodes_list[9].f = NULL;
+        monty_data.opcodes_list[10].opcode = NULL;
+        monty_data.opcodes_list[10].f = NULL;
 }

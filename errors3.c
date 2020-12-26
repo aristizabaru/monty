@@ -11,9 +11,9 @@ void error_sub(void)
 }
 
 /**
- * error_div - prints SUB error message and exit program
+ * error_divi - prints SUB error message and exit program
  */
-void error_div(int code)
+void error_divi(int code)
 {
         switch (code)
         {
@@ -26,6 +26,17 @@ void error_div(int code)
         default:
                 break;
         }
+        free_all();
+        free_stack();
+        exit(EXIT_FAILURE);
+}
+
+/**
+ * error_sub - prints SUB error message and exit program
+ */
+void error_mul(void)
+{
+        fprintf(stderr, "L%d: can't mul, stack too short\n", monty_data.current_line);
         free_all();
         free_stack();
         exit(EXIT_FAILURE);
