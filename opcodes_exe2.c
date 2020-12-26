@@ -71,8 +71,7 @@ void sub(stack_t **stack, unsigned int line_number)
                 error_sub();
         else
         {
-                head->n -= head->next->n;
-                head->next->n = head->n;
+                head->next->n -= head->n;
                 pop(stack, line_number);
         }
 }
