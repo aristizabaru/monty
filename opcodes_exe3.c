@@ -40,3 +40,32 @@ void pchar(stack_t **stack, unsigned int line_number)
         else
                 printf("%c\n", head->n);
 }
+
+/**
+ * ppstr - prints the string starting at the top of the stack
+ * @stack: node of the doubly linked list
+ * @line_number: line_number of the execution
+ */
+void pstr(stack_t **stack, unsigned int line_number)
+{
+        stack_t *head = monty_data.head;
+        stack_t *temp = NULL;
+
+        (void)line_number;
+        if (stack)
+                free(*stack);
+        if (!head)
+                printf("\n");
+        else if (!head->next && (head->n < 32 || head->n > 126))
+                printf("%c\n", head->n);
+        else
+        {
+                temp = head;
+                while (temp)
+                {
+                        if (temp->n < 32 || temp->n > 126)
+                                printf("%c\n", head->n);
+                        temp = temp->next;
+                }
+        }
+}
