@@ -102,6 +102,8 @@ char *get_opcode(void)
 				}
 			}
 		}
+		else if (c == '\n' || monty_data.file_data[idx + 1] == '\0')
+			break;
 	}
 	return (opcode);
 }
