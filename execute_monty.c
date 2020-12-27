@@ -5,7 +5,6 @@
  */
 void exucute_monty(void)
 {
-
 	unsigned int lines = monty_data.lines_total;
 	/* unsigned int lines = 1; */
 	unsigned int current_line = 1;
@@ -95,16 +94,14 @@ char *get_opcode(void)
 				{
 					last_idx = idx;
 					/* takes the last char of a file if there is EOF */
-					/* if (monty_data.file_data[idx + 1] == '\0') */
-					/* last_idx += 1; */
+					if (monty_data.file_data[idx + 1] == '\0' && c != ' ' && c != '\n')
+						last_idx += 1;
 					monty_data.data_index = last_idx;
 					opcode = copy_opcode(firts_idx, last_idx);
 					return (opcode);
 				}
 			}
 		}
-		else if (c == '\n' || monty_data.file_data[idx + 1] == '\0')
-			break;
 	}
 	return (opcode);
 }
@@ -125,5 +122,6 @@ char *copy_opcode(unsigned int firts_idx, unsigned int last_idx)
 	for (; idx < last_idx; idx++, i++)
 		opcode[i] = monty_data.file_data[idx];
 	opcode[i] = '\0';
+
 	return (opcode);
 }
