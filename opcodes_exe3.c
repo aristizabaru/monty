@@ -76,7 +76,7 @@ void pstr(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * rotl - rotates the stack to the bottom
+ * rotl - rotates the stack to the top
  * @stack: node of the doubly linked list
  * @line_number: line_number of the execution
  * Description: The last element of the stack becomes the top element of the stack
@@ -109,6 +109,44 @@ void rotl(stack_t **stack, unsigned int line_number)
 			temp->next = tail;
 			tail->prev = temp;
 			tail->next = NULL;
+		}
+		monty_data.head = head;
+	}
+}
+
+/**
+ * rotr - rotates the stack to the bottom
+ * @stack: node of the doubly linked list
+ * @line_number: line_number of the execution
+ * Description: The last element of the stack becomes the top element of the stack
+ */
+void rotr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *head = monty_data.head;
+	stack_t *temp = head;
+
+	(void)line_number;
+	if (stack)
+		free(*stack);
+	if (head && head->next)
+	{
+		if (!head->next->next)
+		{
+			head = head->next;
+			head->prev = NULL;
+			head->next = temp;
+			temp->prev = head;
+			temp->next = NULL;
+		}
+		else
+		{
+			while (temp->next)
+				temp = temp->next;
+			temp->prev->next = NULL;
+			temp->prev = NULL;
+			temp->next = head;
+			head->prev = temp;
+			head = temp;
 		}
 		monty_data.head = head;
 	}

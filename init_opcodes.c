@@ -32,7 +32,9 @@ void init_opcodes(void)
 	monty_data.opcodes_list[12].f = pstr;
 	monty_data.opcodes_list[13].opcode = "rotl";
 	monty_data.opcodes_list[13].f = rotl;
+	monty_data.opcodes_list[14].opcode = "rotr";
+	monty_data.opcodes_list[14].f = rotr;
 
-	monty_data.opcodes_list[14].opcode = NULL;
-	monty_data.opcodes_list[14].f = NULL;
+	monty_data.opcodes_list[15].opcode = NULL;
+	monty_data.opcodes_list[15].f = NULL;
 }

@@ -10,7 +10,7 @@
 #include <string.h>
 
 /* MACROS */
-#define VALID_OPCODES 14
+#define VALID_OPCODES 15
 #define ITEMS_TO_FREE 3
 #define BUFFER_SIZE 1024
 #define SUCCESS 1
@@ -149,5 +149,6 @@ void mod(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
 
 #endif /* __MONTY__H__ */
