@@ -14,7 +14,9 @@ int main(int argc, char **argv)
 
 	monty_data.head = NULL;
 	monty_data.behavior = STACK;
-	error_usage();
+	init_opcodes();
+	if (argc != 2)
+		error_usage();
 	get_fileName(argv[1]);
 	fd_monty = open_file(path);
 	read_file(fd_monty);
