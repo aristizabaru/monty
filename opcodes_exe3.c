@@ -87,7 +87,6 @@ void rotl(stack_t **stack, unsigned int line_number)
 	stack_t *temp = head;
 	stack_t *tail = head;
 
-	printf("entro\n");
 	(void)line_number;
 	if (stack)
 		free(*stack);
@@ -95,7 +94,6 @@ void rotl(stack_t **stack, unsigned int line_number)
 	{
 		if (!head->next->next)
 		{
-			printf("solo tiene dos\n");
 			head = head->next;
 			head->prev = NULL;
 			head->next = temp;
@@ -104,7 +102,6 @@ void rotl(stack_t **stack, unsigned int line_number)
 		}
 		else
 		{
-			printf("Varios\n");
 			while (temp->next)
 				temp = temp->next;
 			head = head->next;
