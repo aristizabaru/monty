@@ -26,6 +26,7 @@ void free_stack(void)
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head = monty_data.head;
+	stack_t *temp = NULL;
 
 	(void)line_number;
 	monty_data.current_opcode_int = get_opcode();
@@ -41,9 +42,22 @@ void push(stack_t **stack, unsigned int line_number)
 		head = *stack;
 	else
 	{
-		head->prev = *stack;
-		(*stack)->next = head;
-		head = *stack;
+		switch (monty_data.behavior)
+		{
+		case STACK:
+			head->prev = *stack;
+			(*stack)->next = head;
+			head = *stack;
+			break;
+
+		case QUEUE:
+			temp = head;
+			while (temp->next)
+				temp = temp->next;
+			temp->next = *stack;
+			(*stack)->prev = temp;
+			break;
+		}
 	}
 	monty_data.head = head;
 }
@@ -117,6 +131,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
+
 		temp = head->next;
 		free(head);
 		temp->prev = NULL;

@@ -41,6 +41,11 @@ void execute_opcode(void)
 	/* check if opcode is "nop"*/
 	if (opcode_idx == 6)
 		return;
+	/* check for "stack" or "queue" */
+	if (opcode_idx == 15)
+		monty_data.behavior = STACK;
+	else if (opcode_idx == 16)
+		monty_data.behavior = QUEUE;
 	new_node = malloc(sizeof(*new_node));
 	if (new_node == NULL)
 		error_malloc();

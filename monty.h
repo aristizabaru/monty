@@ -10,7 +10,9 @@
 #include <string.h>
 
 /* MACROS */
-#define VALID_OPCODES 15
+#define STACK 0
+#define QUEUE 1
+#define VALID_OPCODES 17
 #define ITEMS_TO_FREE 3
 #define BUFFER_SIZE 1024
 #define SUCCESS 1
@@ -68,6 +70,7 @@ typedef struct global_s
 {
 	stack_t *head;
 	/* ssize_t top; */
+	int behavior;
 	unsigned int current_line;
 	unsigned int lines_total;
 	char *file_data;
