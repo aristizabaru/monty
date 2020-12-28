@@ -79,7 +79,8 @@ void pstr(stack_t **stack, unsigned int line_number)
  * rotl - rotates the stack to the top
  * @stack: node of the doubly linked list
  * @line_number: line_number of the execution
- * Description: The last element of the stack becomes the top element of the stack
+ * Description: The last element of the stack becomes
+ * the top element of the stack
  */
 void rotl(stack_t **stack, unsigned int line_number)
 {
@@ -118,7 +119,8 @@ void rotl(stack_t **stack, unsigned int line_number)
  * rotr - rotates the stack to the bottom
  * @stack: node of the doubly linked list
  * @line_number: line_number of the execution
- * Description: The last element of the stack becomes the top element of the stack
+ * Description: The last element of the stack becomes
+ * the top element of the stack
  */
 void rotr(stack_t **stack, unsigned int line_number)
 {

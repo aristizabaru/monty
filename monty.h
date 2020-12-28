@@ -56,6 +56,7 @@ typedef struct instruction_s
 /**
  * struct global_s - struct for magament data inside the opcode program
  * @head: porinter to first node in the stack linked list
+ * @behavior: stack or queue code for functionality
  * @current_line: current line of execution in file
  * @lines_total: total number of lines un file
  * @file_data: the data of the file loaded into the program
